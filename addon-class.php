@@ -8,8 +8,16 @@
  * Property 'essentials' contains all Listing submodules instances - what
  * provides basic functionality. These submodules might be replaced by Addon by
  * setting extended submodule objects.
+ * 
+ * Read access to the submodules is provided by the magic __get() method, for ex.:
+ * 
+ *     $fields = $listing->form->get_form_fields();
+ *     $price  = $listing->options->price;
+ * 
+ * Where the '$listing' is the APP_Listing instance and 'form' is the object 
+ * stored in $essentials['form'].
  *
- * Use methods 'register_listing_type()' and 'register_taxonomies()' for
+ * Use methods '_register_listing_type()' and '_register_taxonomies()' for
  * registering post types and taxonomies, or do it externally on the 'init'
  * action with default priority.
  *
@@ -43,7 +51,7 @@ final class My_Pay2Post_Addon extends APP_Listing {
 	/**
 	 * Registers "Mytype" post type
 	 */
-	protected function register_listing_type() {
+	protected function _register_listing_type() {
 
 		$labels = array(
 			'name'               => __( 'Mytype Items', APP_TD ),
@@ -81,7 +89,7 @@ final class My_Pay2Post_Addon extends APP_Listing {
 	/**
 	 * Registers taxonomies (optional)
 	 */
-	protected function register_taxonomies() {
+	protected function _register_taxonomies() {
 
 		$category_labels = array(
 			'name'                => __( 'Mytype Categories', APP_TD ),
