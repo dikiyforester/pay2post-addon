@@ -8,13 +8,13 @@
  * Property 'essentials' contains all Listing submodules instances - what
  * provides basic functionality. These submodules might be replaced by Addon by
  * setting extended submodule objects.
- * 
- * Read access to the submodules is provided by the magic __get() method, for ex.:
- * 
+ *
+ * Read access to the submodules is provided by the magic __get() method, ex.:
+ *
  *     $fields = $listing->form->get_form_fields();
  *     $price  = $listing->options->price;
- * 
- * Where the '$listing' is the APP_Listing instance and 'form' is the object 
+ *
+ * Where the '$listing' is the APP_Listing instance and 'form' is the object
  * stored in $essentials['form'].
  *
  * Use methods '_register_listing_type()' and '_register_taxonomies()' for
@@ -32,17 +32,23 @@ final class My_Pay2Post_Addon extends APP_Listing {
 	 * Here might be replaced default submodules
 	 */
 	public function __construct() {
-
-		// Override submodules example.
-		// New class should be an ancestor of the overridden one.
-		//
-		// In example My_Addon_Forms extends APP_Listing_Forms.
-		// $this->essentials['form'] = new My_Addon_Forms( $this );
-		//
-		// In example My_Addon_Form_Settings extends APP_Listing_Form_Settings.
-		//if ( is_admin() ) {
-		//	$this->essentials['form_settings'] = new My_Addon_Form_Settings( $this );
-		//}
+		/*
+		 * Override submodules example.
+		 *
+		 * New class should be an ancestor of the overridden one.
+		 *
+		 * In example My_Addon_Forms extends APP_Listing_Forms.
+		 *
+		 *     $this->set_module( 'form', new APP_Listing_Form( $this ) );
+		 *
+		 *
+		 * In example My_Addon_Form_Settings extends APP_Listing_Form_Settings.
+		 *
+		 *     if ( is_admin() ) {
+		 *         $this->set_module( 'form_settings', new My_Addon_Form_Settings( $this ) );
+		 *     }
+		 *
+		 */
 
 		// Construct parent and set listing type (post type to be assigned with).
 		parent::__construct( 'mytype' );
