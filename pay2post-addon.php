@@ -8,8 +8,8 @@ Author: dikiy_forester
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-// Make sure APP_Listing class loaded.
-add_action( 'appthemes_load', 'my_pay2post_addon_init', 12 );
+// Make sure Pay2Post_Plugin class loaded.
+add_action( 'pay2post_register_listing_types', 'my_pay2post_addon_init' );
 
 /**
  * Instatiates Listing type
@@ -17,5 +17,5 @@ add_action( 'appthemes_load', 'my_pay2post_addon_init', 12 );
 function my_pay2post_addon_init() {
 	require 'addon-class.php';
 
-	new My_Pay2Post_Addon;
+	Pay2Post_Plugin::register_listing_type( 'mytype', 'My_Pay2Post_Addon' );
 }
